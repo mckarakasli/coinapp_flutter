@@ -1,0 +1,402 @@
+[
+  {
+    "name": "Bitcoin",
+    "symbol": "BTCUSDT"
+  },
+  {
+    "name": "Ethereum",
+    "symbol": "ETHUSDT"
+  },
+  {
+    "name": "XRP",
+    "symbol": "XRPUSDT"
+  },
+  {
+    "name": "Tether",
+    "symbol": "USDTUSDT"
+  },
+  {
+    "name": "BNB",
+    "symbol": "BNBUSDT"
+  },
+  {
+    "name": "Solana",
+    "symbol": "SOLUSDT"
+  },
+  {
+    "name": "USDC",
+    "symbol": "USDCUSDT"
+  },
+  {
+    "name": "Dogecoin",
+    "symbol": "DOGEUSDT"
+  },
+  {
+    "name": "Lido Staked Ether",
+    "symbol": "STETHUSDT"
+  },
+  {
+    "name": "TRON",
+    "symbol": "TRXUSDT"
+  },
+  {
+    "name": "Cardano",
+    "symbol": "ADAUSDT"
+  },
+  {
+    "name": "Wrapped Bitcoin",
+    "symbol": "WBTCUSDT"
+  },
+  {
+    "name": "Wrapped stETH",
+    "symbol": "WSTETHUSDT"
+  },
+  {
+    "name": "Hyperliquid",
+    "symbol": "HYPEUSDT"
+  },
+  {
+    "name": "Stellar",
+    "symbol": "XLMUSDT"
+  },
+  {
+    "name": "Sui",
+    "symbol": "SUIUSDT"
+  },
+  {
+    "name": "Chainlink",
+    "symbol": "LINKUSDT"
+  },
+  {
+    "name": "Wrapped Beacon ETH",
+    "symbol": "WBETHUSDT"
+  },
+  {
+    "name": "Wrapped eETH",
+    "symbol": "WEETHUSDT"
+  },
+  {
+    "name": "Hedera",
+    "symbol": "HBARUSDT"
+  },
+  {
+    "name": "Bitcoin Cash",
+    "symbol": "BCHUSDT"
+  },
+  {
+    "name": "Avalanche",
+    "symbol": "AVAXUSDT"
+  },
+  {
+    "name": "Litecoin",
+    "symbol": "LTCUSDT"
+  },
+  {
+    "name": "WETH",
+    "symbol": "WETHUSDT"
+  },
+  {
+    "name": "LEO Token",
+    "symbol": "LEOUSDT"
+  },
+  {
+    "name": "Shiba Inu",
+    "symbol": "SHIBUSDT"
+  },
+  {
+    "name": "Toncoin",
+    "symbol": "TONUSDT"
+  },
+  {
+    "name": "USDS",
+    "symbol": "USDSUSDT"
+  },
+  {
+    "name": "Ethena USDe",
+    "symbol": "USDEUSDT"
+  },
+  {
+    "name": "Binance Bridged USDT (BNB Smart Chain)",
+    "symbol": "BSC-USDUSDT"
+  },
+  {
+    "name": "WhiteBIT Coin",
+    "symbol": "WBTUSDT"
+  },
+  {
+    "name": "Coinbase Wrapped BTC",
+    "symbol": "CBBTCUSDT"
+  },
+  {
+    "name": "Uniswap",
+    "symbol": "UNIUSDT"
+  },
+  {
+    "name": "Polkadot",
+    "symbol": "DOTUSDT"
+  },
+  {
+    "name": "Monero",
+    "symbol": "XMRUSDT"
+  },
+  {
+    "name": "Pepe",
+    "symbol": "PEPEUSDT"
+  },
+  {
+    "name": "Bitget Token",
+    "symbol": "BGBUSDT"
+  },
+  {
+    "name": "Aave",
+    "symbol": "AAVEUSDT"
+  },
+  {
+    "name": "Cronos",
+    "symbol": "CROUSDT"
+  },
+  {
+    "name": "Bittensor",
+    "symbol": "TAOUSDT"
+  },
+  {
+    "name": "Ethena Staked USDe",
+    "symbol": "SUSDEUSDT"
+  },
+  {
+    "name": "Dai",
+    "symbol": "DAIUSDT"
+  },
+  {
+    "name": "Ethereum Classic",
+    "symbol": "ETCUSDT"
+  },
+  {
+    "name": "NEAR Protocol",
+    "symbol": "NEARUSDT"
+  },
+  {
+    "name": "Pi Network",
+    "symbol": "PIUSDT"
+  },
+  {
+    "name": "Ondo",
+    "symbol": "ONDOUSDT"
+  },
+  {
+    "name": "Ethena",
+    "symbol": "ENAUSDT"
+  },
+  {
+    "name": "Aptos",
+    "symbol": "APTUSDT"
+  },
+  {
+    "name": "Internet Computer",
+    "symbol": "ICPUSDT"
+  },
+  {
+    "name": "Jito Staked SOL",
+    "symbol": "JITOSOLUSDT"
+  },
+  {
+    "name": "OKB",
+    "symbol": "OKBUSDT"
+  },
+  {
+    "name": "Bonk",
+    "symbol": "BONKUSDT"
+  },
+  {
+    "name": "Kaspa",
+    "symbol": "KASUSDT"
+  },
+  {
+    "name": "Mantle",
+    "symbol": "MNTUSDT"
+  },
+  {
+    "name": "Pudgy Penguins",
+    "symbol": "PENGUUSDT"
+  },
+  {
+    "name": "BlackRock USD Institutional Digital Liquidity Fund",
+    "symbol": "BUIDLUSDT"
+  },
+  {
+    "name": "Algorand",
+    "symbol": "ALGOUSDT"
+  },
+  {
+    "name": "Arbitrum",
+    "symbol": "ARBUSDT"
+  },
+  {
+    "name": "Binance-Peg WETH",
+    "symbol": "WETHUSDT"
+  },
+  {
+    "name": "USD1",
+    "symbol": "USD1USDT"
+  },
+  {
+    "name": "VeChain",
+    "symbol": "VETUSDT"
+  },
+  {
+    "name": "Cosmos Hub",
+    "symbol": "ATOMUSDT"
+  },
+  {
+    "name": "Render",
+    "symbol": "RENDERUSDT"
+  },
+  {
+    "name": "Worldcoin",
+    "symbol": "WLDUSDT"
+  },
+  {
+    "name": "POL (ex-MATIC)",
+    "symbol": "POLUSDT"
+  },
+  {
+    "name": "Gate",
+    "symbol": "GTUSDT"
+  },
+  {
+    "name": "Official Trump",
+    "symbol": "TRUMPUSDT"
+  },
+  {
+    "name": "Artificial Superintelligence Alliance",
+    "symbol": "FETUSDT"
+  },
+  {
+    "name": "Fasttoken",
+    "symbol": "FTNUSDT"
+  },
+  {
+    "name": "Sei",
+    "symbol": "SEIUSDT"
+  },
+  {
+    "name": "Binance Staked SOL",
+    "symbol": "BNSOLUSDT"
+  },
+  {
+    "name": "Sky",
+    "symbol": "SKYUSDT"
+  },
+  {
+    "name": "Filecoin",
+    "symbol": "FILUSDT"
+  },
+  {
+    "name": "sUSDS",
+    "symbol": "SUSDSUSDT"
+  },
+  {
+    "name": "Quant",
+    "symbol": "QNTUSDT"
+  },
+  {
+    "name": "SPX6900",
+    "symbol": "SPXUSDT"
+  },
+  {
+    "name": "Rocket Pool ETH",
+    "symbol": "RETHUSDT"
+  },
+  {
+    "name": "Lombard Staked BTC",
+    "symbol": "LBTCUSDT"
+  },
+  {
+    "name": "Kelp DAO Restaked ETH",
+    "symbol": "RSETHUSDT"
+  },
+  {
+    "name": "Jupiter",
+    "symbol": "JUPUSDT"
+  },
+  {
+    "name": "Flare",
+    "symbol": "FLRUSDT"
+  },
+  {
+    "name": "Jupiter Perpetuals Liquidity Provider Token",
+    "symbol": "JLPUSDT"
+  },
+  {
+    "name": "Story",
+    "symbol": "IPUSDT"
+  },
+  {
+    "name": "KuCoin",
+    "symbol": "KCSUSDT"
+  },
+  {
+    "name": "USDtb",
+    "symbol": "USDTBUSDT"
+  },
+  {
+    "name": "Fartcoin",
+    "symbol": "FARTCOINUSDT"
+  },
+  {
+    "name": "StakeWise Staked ETH",
+    "symbol": "OSETHUSDT"
+  },
+  {
+    "name": "First Digital USD",
+    "symbol": "FDUSDUSDT"
+  },
+  {
+    "name": "XDC Network",
+    "symbol": "XDCUSDT"
+  },
+  {
+    "name": "Mantle Staked Ether",
+    "symbol": "METHUSDT"
+  },
+  {
+    "name": "USDT0",
+    "symbol": "USDT0USDT"
+  },
+  {
+    "name": "Injective",
+    "symbol": "INJUSDT"
+  },
+  {
+    "name": "Liquid Staked ETH",
+    "symbol": "LSETHUSDT"
+  },
+  {
+    "name": "Celestia",
+    "symbol": "TIAUSDT"
+  },
+  {
+    "name": "Curve DAO",
+    "symbol": "CRVUSDT"
+  },
+  {
+    "name": "NEXO",
+    "symbol": "NEXOUSDT"
+  },
+  {
+    "name": "Polygon Bridged USDT (Polygon)",
+    "symbol": "USDTUSDT"
+  },
+  {
+    "name": "Stacks",
+    "symbol": "STXUSDT"
+  },
+  {
+    "name": "FLOKI",
+    "symbol": "FLOKIUSDT"
+  },
+  {
+    "name": "Optimism",
+    "symbol": "OPUSDT"
+  }
+]
