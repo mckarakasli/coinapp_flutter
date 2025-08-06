@@ -1,5 +1,6 @@
 import 'package:coinappproject/screens/authPages/login_page.dart';
 import 'package:coinappproject/screens/childPages/trade_Comment_Page.dart';
+import 'package:coinappproject/utils/number_formater.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -36,12 +37,12 @@ class _CoinDetailPageState extends State<CoinDetailPage> {
     _loadUserData();
 
     _targetController = TextEditingController(
-      text: widget.price.toStringAsFixed(2),
+      text: NumberFormatter.formatDouble(widget.price)
     );
 
     double stopLossDefault = widget.price * 0.97;
     _stopLossController = TextEditingController(
-      text: stopLossDefault.toStringAsFixed(2),
+      text: NumberFormatter.formatDouble(stopLossDefault),
     );
 
     fetchSignals();
@@ -118,7 +119,7 @@ class _CoinDetailPageState extends State<CoinDetailPage> {
       final url = Uri.parse('http://88.222.220.109:8001/create_trade');
 
       final double entryPrice = widget.price;
-      final double targetPrice = double.tryParse(_targetController.text) ?? 0.0;
+      final double targetPrice = double.tryParse(_targetController.text.replaceAll(',','.')) ?? 0.0;
       final double? stoploss = double.tryParse(
         _stopLossController.text.replaceAll(',', '.'),
       );
@@ -431,7 +432,7 @@ class _CoinDetailPageState extends State<CoinDetailPage> {
             ),
             const SizedBox(height: 4),
             Text(
-              "\$${widget.price.toStringAsFixed(2)}",
+              "\$${NumberFormatter.formatDouble(widget.price)}",
               style: GoogleFonts.montserrat(
                 fontSize: 26,
                 fontWeight: FontWeight.w600,

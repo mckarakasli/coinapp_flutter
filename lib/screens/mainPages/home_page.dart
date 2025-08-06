@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:coinappproject/models/coincard.dart';
-import 'package:coinappproject/models/traderlist.dart';
-import 'package:coinappproject/screens/all_trade_list_page.dart';
+import 'package:coinappproject/models/trade_model.dart';
+import 'package:coinappproject/widgets/home_all_trade_list_page.dart';
 import 'package:coinappproject/screens/authPages/login_page.dart';
-import 'package:coinappproject/screens/childPages/signals.page.dart';
+import 'package:coinappproject/screens/mainPages/signals.page.dart';
 
 import 'package:coinappproject/screens/mainPages/profile_page.dart';
 import 'package:coinappproject/screens/mainPages/user_rate_summary.dart';
 
 import 'package:coinappproject/services/binance_services.dart';
-import 'package:coinappproject/services/top_trade_services.dart';
+
 import 'package:coinappproject/widgets/bottom_navigator.dart';
 import 'package:coinappproject/widgets/home_coin_card.dart';
-import 'package:coinappproject/widgets/user_trade_card.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
 
   final CoinService _coinService = CoinService();
-  final TradeService _tradeService = TradeService();
+
 
   final List<Widget> _pages = [
     const HomePage(),

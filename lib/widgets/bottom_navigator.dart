@@ -19,7 +19,7 @@ class BottomNavBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Panel'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.money), label: 'Tüm Kriptolar'),
+            icon: Icon(Icons.confirmation_num), label: 'Liderlik Tablosu'),
         BottomNavigationBarItem(
             icon: Icon(Icons.account_balance), label: 'Profilim'),
         BottomNavigationBarItem(

@@ -1,3 +1,5 @@
+import 'package:coinappproject/services/trade_save_services.dart';
+import 'package:coinappproject/utils/number_formater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,57 +48,7 @@ class _TradeCommentPageState extends State<TradeCommentPage> {
     });
   }
 
-  Future<void> _submitComment() async {
-    if (userId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Lütfen giriş yapınız.")),
-      );
-      return;
-    }
-
-    final trimmedComment = _commentController.text.trim();
-
-    if (trimmedComment.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Yorum boş olamaz.")),
-      );
-      return;
-    }
-
-    if (trimmedComment.length > 150) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Yorum 150 karakterden uzun olamaz.")),
-      );
-      return;
-    }
-
-    try {
-      final response = await http.post(
-        Uri.parse("http://88.222.220.109:8001/add_comment"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({
-          "user_id": userId!,
-          "trade_id": widget.tradeId,
-          "comment": trimmedComment,
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Yorum başarıyla kaydedildi.")),
-        );
-        Navigator.pop(context);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Yorum gönderilemedi: ${response.body}")),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Bir hata oluştu: $e")),
-      );
-    }
-  }
+  
 
   @override
   void dispose() {
@@ -119,7 +71,7 @@ class _TradeCommentPageState extends State<TradeCommentPage> {
           children: [
             Text("Coin: ${widget.symbol}",
                 style: GoogleFonts.poppins(color: Colors.white, fontSize: 18)),
-            Text("Fiyat: \$${widget.entryPrice.toStringAsFixed(2)}",
+            Text("Fiyat: \$${NumberFormatter.formatDouble(widget.entryPrice)}",
                 style: GoogleFonts.poppins(color: Colors.white70)),
             Text("Yön: ${widget.direction}",
                 style: GoogleFonts.poppins(color: Colors.white70)),
@@ -150,9 +102,15 @@ class _TradeCommentPageState extends State<TradeCommentPage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _submitComment,
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-                child: const Text("Yorumu Gönder"),
+                onPressed: () {
+                  submitComment(
+                    context: context,
+                    userId: userId,
+                    commentController: _commentController,
+                    tradeId: widget.tradeId,
+                  );
+                },
+                child: Text('Yorum Gönder'),
               ),
             ),
           ],

@@ -4,7 +4,7 @@ import 'package:coinappproject/screens/authPages/login_page.dart';
 import 'package:coinappproject/screens/authPages/register_page.dart';
 
 import 'package:coinappproject/screens/mainPages/home_page.dart';
-import 'package:coinappproject/screens/all_trade_list_page.dart';
+import 'package:coinappproject/widgets/home_all_trade_list_page.dart';
 import 'package:coinappproject/screens/childPages/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

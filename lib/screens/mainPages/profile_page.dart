@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:coinappproject/models/traderlist.dart';
+import 'package:coinappproject/models/trade_model.dart';
 import 'package:coinappproject/screens/authPages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

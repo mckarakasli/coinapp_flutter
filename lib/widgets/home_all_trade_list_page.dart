@@ -1,117 +1,8 @@
+import 'dart:async';
+import 'package:coinappproject/models/trade_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-// MODELLER
-
-class Comment {
-  final int id;
-  final int user_id;
-  final int trade_id;
-  final String comment;
-  final DateTime created_at;
-
-  Comment({
-    required this.id,
-    required this.user_id,
-    required this.trade_id,
-    required this.comment,
-    required this.created_at,
-  });
-
-  factory Comment.fromJson(Map<String, dynamic> json) {
-    return Comment(
-      id: json['id'],
-      user_id: json['user_id'],
-      trade_id: json['trade_id'],
-      comment: json['comment'] ?? '',
-      created_at: DateTime.parse(json['created_at']),
-    );
-  }
-}
-
-class Trade {
-  final int id;
-  final String symbol;
-  final int user_id;
-  final double entry_price;
-  final double target_price;
-  final double stop_loss;
-  final int status;
-  final String direction;
-  final double closed_price;
-  final double rate;
-  final DateTime? closed_time;
-  final DateTime created_at;
-  final String username;
-  final double binance_price;
-  final int trade_id;
-  final int userstop;
-  final Comment? comment;
-
-  Trade({
-    required this.id,
-    required this.symbol,
-    required this.user_id,
-    required this.entry_price,
-    required this.target_price,
-    required this.stop_loss,
-    required this.status,
-    required this.direction,
-    required this.closed_price,
-    required this.rate,
-    this.closed_time,
-    required this.created_at,
-    required this.username,
-    required this.binance_price,
-    required this.trade_id,
-    required this.userstop,
-    this.comment,
-  });
-
-  factory Trade.fromJson(Map<String, dynamic> json) {
-    return Trade(
-      id: json['id'],
-      symbol: json['symbol'],
-      user_id: json['user_id'],
-      entry_price: (json['entry_price'] as num).toDouble(),
-      target_price: (json['target_price'] as num).toDouble(),
-      stop_loss: (json['stop_loss'] as num).toDouble(),
-      status: json['status'],
-      direction: json['direction'],
-      closed_price: (json['closed_price'] as num).toDouble(),
-      rate: (json['rate'] as num).toDouble(),
-      closed_time: json['closed_time'] != null
-          ? DateTime.parse(json['closed_time'])
-          : null,
-      created_at: DateTime.parse(json['created_at']),
-      username: json['username'],
-      binance_price: (json['binance_price'] as num).toDouble(),
-      trade_id: json['trade_id'],
-      userstop: json['userstop'],
-      comment:
-          json['comment'] != null ? Comment.fromJson(json['comment']) : null,
-    );
-  }
-
-  String get formattedEntryPrice => entry_price.toStringAsFixed(4);
-  String get formattedCurrentPrice =>
-      (status == 1 ? binance_price : closed_price).toStringAsFixed(4);
-  String get formattedStopLoss => stop_loss.toStringAsFixed(4);
-}
-
-// WIDGET
-
-void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      backgroundColor: Colors.black,
-      
-      body: TradeListWidget(),
-    ),
-  ));
-}
 
 class TradeListWidget extends StatefulWidget {
   const TradeListWidget({super.key});
@@ -125,11 +16,19 @@ class _TradeListWidgetState extends State<TradeListWidget> {
   bool isLoadingMore = false;
   int fetchedCount = 0;
   final int pageSize = 5;
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
     loadInitialTrades();
+    _startAutoRefresh();
+  }
+
+  void _startAutoRefresh() {
+    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      _updatePrices();
+    });
   }
 
   Future<List<Trade>> fetchTrades({int skip = 0, int limit = 5}) async {
@@ -172,7 +71,17 @@ class _TradeListWidgetState extends State<TradeListWidget> {
           await fetchTrades(skip: fetchedCount, limit: 1000);
       if (moreTrades.isNotEmpty) {
         setState(() {
-          trades.addAll(moreTrades);
+          // Burada her bir Trade nesnesinin fiyat bilgisini güncelleyin
+          for (var newTrade in moreTrades) {
+            // Eski trade verileri varsa, onları güncelle
+            var existingTradeIndex =
+                trades.indexWhere((trade) => trade.id == newTrade.id);
+            if (existingTradeIndex != -1) {
+              trades[existingTradeIndex] = newTrade;
+            } else {
+              trades.add(newTrade);
+            }
+          }
           trades.sort((a, b) => b.created_at.compareTo(a.created_at));
           fetchedCount += moreTrades.length;
         });
@@ -181,6 +90,24 @@ class _TradeListWidgetState extends State<TradeListWidget> {
       print('Daha fazla veri yüklenirken hata oluştu: $error');
     }
     isLoadingMore = false;
+  }
+
+  // Fiyatları 2 saniyede bir güncelleyen fonksiyon
+  void _updatePrices() async {
+    try {
+      final List<Trade> updatedTrades = await fetchTrades(skip: 0, limit: 1000);
+      setState(() {
+        for (var updatedTrade in updatedTrades) {
+          var tradeIndex =
+              trades.indexWhere((trade) => trade.id == updatedTrade.id);
+          if (tradeIndex != -1) {
+            trades[tradeIndex] = updatedTrade; // Fiyat güncellemesi yapılıyor
+          }
+        }
+      });
+    } catch (error) {
+      print("Fiyat güncellenirken hata oluştu: $error");
+    }
   }
 
   String _calculateTimeAgo(DateTime createdAt) {
@@ -207,6 +134,12 @@ class _TradeListWidgetState extends State<TradeListWidget> {
         color: color,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -279,8 +212,6 @@ class _TradeListWidgetState extends State<TradeListWidget> {
                             children: [
                               _infoText("Giriş: \$${trade.formattedEntryPrice}",
                                   Colors.blueGrey),
-
-                           
                               _infoText(
                                 "${trade.rate}%",
                                 trade.rate >= 0
@@ -292,7 +223,7 @@ class _TradeListWidgetState extends State<TradeListWidget> {
                           const SizedBox(height: 6),
                           _infoText("Hedef: \$${trade.target_price}",
                               Colors.greenAccent),
-                                 _infoText(
+                          _infoText(
                             trade.status == 1
                                 ? "Anlık: \$${trade.formattedCurrentPrice}"
                                 : "Kapanış: \$${trade.formattedCurrentPrice}",
